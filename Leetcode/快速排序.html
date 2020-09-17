@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // arrData(5);
+        // console.log(arr);
+        // 伪代码
+        // function quick(A, n) {
+        //     quick_sort_c(arr, 0, n - 1);
+        // }
+
+        // quick_sort_c(arr, head, tail){
+        //     if (head >= tail) return;
+
+        //     let mid = partition(arr, head, tail);
+        //     quick_sort_c(arr, head, mid);
+        //     quick_sort_c(arr, mid + 1, tail);
+        // }
+
+        // 伪代码思路整理
+        // function divide(arr, head, tail) {
+        //     const pivot = arr[tail];
+
+        //     let i = head;
+
+        //     for (let j = head; j < tail - 1; j++) {
+        //         if (arr[j] <= pivot) {
+        //             swap(arr, i, j);
+        //             i++;
+        //         }
+        //     }
+        //     swap(arr, i, tail);
+        //     return i;
+        // }
+
+        // function quickSort(arr, head, tail) {
+        //     tail = tail || arr.length;
+        //     if (head < tail) {
+        //         partitionIndex = partition(arr, left, right);
+        //         quickSort(arr, left, partition - 1);
+        //         quickSort(arr, partition, right);
+        //     }
+        // }
+
+        // function quickSort(arr, left, right) {
+        //     let partitionIndex;
+        //     left = typeof left != 'number' ? 0 : left;
+        //     right = typeof right != 'number' ? len - 1 : right;
+
+        //     if (left < right) {
+        //         partitionIndex = partition(arr, left, right);
+        //         quickSort(arr, left, partition - 1);
+        //         quickSort(arr, partition, right);
+        //     }
+        // }
+
+        // function partition(arr, left, right) {
+        //     let pivot = left,
+        //         j = pivot + 1;
+        //     for (let i = j; i <= right; i++) {
+        //         if (arr[i] < arr[pivot]) {
+        //             swap(arr, i, index);
+        //             index++
+        //         }
+        //     }
+        //     // swap...
+        // }
+
+        // 最终自己完成
+        let arr = [];
+        function arrData(num) {
+            for (let i = 0; i < num; i++) {
+                arr[i] = Math.floor(Math.random() * num + 1)
+            }
+        }
+
+        arrData(10);
+        console.log(arr);
+
+        function quickSort(arr, left = 0, right = arr.length - 1) {
+            let partitionIndex;
+            if (left < right) {
+                partitionIndex = partition(arr, left, right);
+                quickSort(arr, left, partitionIndex - 1);
+                quickSort(arr, partitionIndex + 1, right);
+            }
+            return arr;
+        }
+
+        function partition(arr, left, right) {
+            let pivot = arr[right],
+                i = left;
+
+            for (let j = i; j < right; j++) {
+                if (j < pivot) {
+                    swap(arr, i, j);
+                    i++;
+                }
+                swap(arr, i, right);
+                return i;
+            }
+        }
+
+        function swap(arr, i, j) {
+            const temp = i;
+            i = j;
+            j = temp;
+        }
+
+        let result = quickSort(arr);
+        console.log(result);
+
+
+    </script>
+</body>
+
+</html>
