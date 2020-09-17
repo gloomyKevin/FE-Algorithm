@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function merge_sort(arr, len) {
+        //     merge_sort_c(arr, 0, len - 1);
+
+        // }
+
+        // function merge_sort_c(arr, head, tail) {
+        //     if (head > tail) {
+        //         return;
+        //     }
+
+        //     mid = (head + tail) / 2;
+        //     merge_sort_c(arr, head, mid);
+        //     merge_sort_c(arr, mid + 1, tail);;
+
+        //     let temp = [];
+        //     let i = head,
+        //         j = mid,
+        //         k = 0;
+
+        //     while (i < mid && j < tail) {
+        //         if (arr[i] < arr[j]) {
+        //             temp[k++] = arr[i];
+        //             i++;
+        //         } else {
+        //             temp[k++] = arr[j];
+        //             j++;
+        //         }
+        //     }
+        // }
+
+        function sort(originalArray) {
+            if (originalArray.length < 1) {
+                return;
+            }
+
+            const middleIndex = Math.floor(originalArray.length / 2);
+            const leftArray = originalArray.slice(0, middleIndex);
+            const rightArray = originalArray.slice(middleIndex + 1, originalArray.leftArray);
+
+            const leftSortedArray = this.sort(leftArray);
+            const rightSortedArray = this.sort(rightArray);
+
+            return mergeSortedArrays(leftSortedArray, rightSortedArray);
+        }
+
+        function mergeSortedArrays(leftArray, rightArray) {
+            let sortedArray = [];
+
+            while (leftArray.length && rightArray.length) {
+                let minimumElement = null;
+
+                if (leftArray[0] <= rightArray[0]) {
+                    minimumElement = leftArray.shift();
+                } else {
+                    minimumElement = rightArray.shift();
+                }
+                sortedArray.push(minimumElement);
+            }
+
+            if (leftArray.length) {
+                sortedArray.concat(leftArray);
+            }
+            if (rightArray.length) {
+                sortedArray.concat(rightArray);
+            }
+            return sortedArray;
+        }
+    </script>
+</body>
+
+</html>

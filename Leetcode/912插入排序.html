@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 插入排序
+        let arr = [];
+        function arrData(num) {
+            for (let i = 0; i < num; i++) {
+                arr[i] = Math.floor(Math.random() * num + 1)
+            }
+        }
+
+        arrData(10);
+        console.log(arr);
+
+        var sortArray = function (nums) {
+            let len = nums.length;
+            if (len < 1) {
+                return nums;
+            }
+
+            for (let i = 1; i < len - 1; i++) {
+                let value = nums[i];
+                for (let j = len - i - 1; j >= 0; j--) {
+                    if (nums[j] > value) {
+                        nums[j + 1] = nums[j];
+                    } else {
+                        break;
+                    }
+                }
+                nums[len - i] = value;
+            }
+            return nums;
+        }
+
+        console.log(sortArray(arr));
+    </script>
+</body>
+
+</html>
