@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+* @param {number[]} nums
+* @return {number[]}
+*/
+        // 冒泡排序
+        // var sortArray = function (nums) {
+        //     var len = nums.length
+        //     if (len < 1) { return nums }
+
+        //     for (var i = 0; i < len - 1; i++) {
+        //         var flag = false;
+        //         for (var j = 0; j < len - i - 1; j++) {
+        //             if (nums[j] > nums[j + 1]) {
+        //                 var temp = nums[j];
+        //                 nums[j] = nums[j + 1];
+        //                 nums[j + 1] = temp;
+        //                 flag = true;
+        //             }
+        //         }
+        //         if (!flag) break;
+        //     }
+        //     return nums;
+        // };
+
+        // 优化
+
+        // 造数据
+        let arr = [];
+
+        function arrData(num) {
+            for (let i = 0; i < num; i++) {
+                arr[i] = Math.floor(Math.random() * num + 1);
+            }
+        }
+
+        arrData(10);
+        console.log(arr);
+
+        var sortArray = function (nums) {
+            if (nums.length < 1) { return nums; }
+            for (let i = 0; i < nums.length - 1; i++) {
+                let hasChange = false;
+                for (let j = 0; j < nums.length - i - 1; j++) {
+                    if (nums[j] > nums[j + 1]) {
+                        [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
+                        hasChange = true;
+                    }
+                }
+                if (!hasChange) { break; }
+            }
+            return nums;
+        }
+        console.log(sortArray(arr));
+    </script>
+</body>
+
+</html>
