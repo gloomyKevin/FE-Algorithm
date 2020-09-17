@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 先快排再找数字
+        // let quickSort = (arr) => {
+        //     quick(arr, 0, arr.length - 1);
+        // }
+
+        // let quick = (arr, left, right) => {
+        //     let index;
+        //     if (left < right) {
+        //         partitionIndex = partition(arr, left, right);
+        //         if (left < partitionIndex - 1) {
+        //             quick(arr, 0, partitionIndex - 1);
+        //         }
+        //         if (partitionIndex < right) {
+        //             quick(arr, partitionIndex, right);
+        //         }
+        //     }
+        // }
+
+        // let partition = (arr, left, right) => {
+        //     let partition = Math.floor(Math.random * (right - left) + left),
+        //         i = left,
+        //         j = right;
+
+        //     while (i <= j) {
+        //         while (arr[i] < partition) {
+        //             i++
+        //         }
+        //         while (arr[j] > partition) {
+        //             j--;
+        //         }
+        //         if (i <= j) {
+        //             swap(arr, i, j);
+        //             i += 1;
+        //             j -= 1;
+        //         }
+        //     }
+        // }
+
+        // let swap = (arr, i, j) => {
+        //     const temp = arr[i];
+        //     arr[i] = arr[j];
+        //     arr[j] = temp;
+        // }
+
+        // // 测试
+        // let arr = [1, 3, 2, 5, 4]
+        // quickSort(arr)
+        // console.log(arr) // [1, 2, 3, 4, 5]
+        // // 第 2 个最大值
+        // console.log(arr[arr.length - 2])  // 4
+
+        // 最好的方法,快速选择法
+    </script>
+</body>
+
+</html>
