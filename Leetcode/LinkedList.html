@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Node {
+            constructor(element) {
+                this.element = element
+                this.next = null
+            }
+        }
+
+        class LinkedList {
+            constructor() {
+                this.head = new Node('head');
+            }
+
+            // 要走一遍,O(n)
+            findByValue(item) {
+                let currentNode = this.head.next;
+                while (currentNode !== null && currentNode.element !== item) {
+                    currentNode = currentNode.next;
+                }
+                console.log(currentNode);
+                return currentNode === null ? -1 : currentNode;
+            }
+
+            // 要走一遍, O(n)
+            findByIndex(index) {
+                let currentNode = this.head.next;
+                let pos = 0
+                // if (index < 1) {
+                //     return -1;
+                // }
+                while (currentNode !== null && pos !== index) {
+                    currentNode = currentNode.next;
+                    pos++;
+                }
+                console.log(currentNode);
+                return currentNode === null ? -1 : currentNode;
+            }
+
+            // 要走一遍,O(n)
+            append(newElement) {
+                let newNode = new Node(newElement);
+                let currentNode = this.head;
+                while (currentNode.next !== null) {
+                    currentNode = currentNode.next;
+                }
+                currentNode.next = newNode;
+            }
+
+            // 指定元素后插入
+            insert(newElement, element) {
+                let currentNode = this.head;
+                let newNode = new Node(newElement);
+                while (currentNode.next !== null) {
+                    currentNode = currentNode.next;
+                    // if (currentNode.next === null) {
+                    //     console.log('没有找到');
+                    //     return -1;
+                    // }
+                }
+                currentNode === null ? -1 : currentNode;
+                newNode.next = currentNode.next;
+                currentNode.next = newNode;
+            }
+
+            removeByIndex(index) {
+
+            }
+
+            // findPrev(item) {
+            //     let currentNode = this.head;
+            //     while (currentNode.next !== null && currentNode.next.element !== item) {
+            //         currentNode = currentNode.next;
+            //     }
+            //     if (currentNode.next === null) {
+            //         return -1;
+            //     }
+            //     currentNode.next = currentNode.next.next;
+            // }
+
+            removeByValue(item) {
+                let prevNode = this.head;
+                while (prevNode.next !== null && prevNode.next.element !== item) {
+                    prevNode = prevNode.next;
+                }
+                if (prevNode.next === null) {
+                    return -1;
+                }
+                prevNode.next = prevNode.next.next;
+            }
+
+            // 要走一遍,O(n)
+            display() {
+                let currentNode = this.head.next;
+                while (currentNode !== null) {
+                    console.log(currentNode.element);
+                    currentNode = currentNode.next;
+                }
+            }
+
+            // 翻转链表,使用哨兵节点
+            reverseList() {
+                let previousNode = null
+                let currentNode = this.head.next;
+                while (currentNode !== null) {
+                    const nextNode = currentNode.next;
+                    currentNode.next = previousNode;
+                    previousNode = currentNode;
+                    currentNode = nextNode;
+                }
+                this.head.next = previousNode;
+            }
+
+            // 环验证
+
+        }
+
+        const LList = new LinkedList();
+        LList.append('chen');
+        LList.append('curry');
+        LList.append('kevin');
+        LList.append('gary');
+
+        console.log('-------findByValue------');
+        LList.findByValue('curry');
+        LList.display();
+
+        console.log('-------findByIndex------');
+        LList.findByIndex(3);
+        LList.display();
+
+        console.log('-------removeByValue------');
+        LList.removeByValue('gary');
+        LList.display();
+
+        console.log('-------removeByValue------');
+        LList.insert('Tom', 'kevin');
+        LList.display();
+
+        console.log('-------reverseLinkedList------');
+        LList.reverseList();
+        LList.display();
+    </script>
+</body>
+
+</html>
