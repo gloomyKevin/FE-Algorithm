@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 这里的concat就是数组原型对象的concat方法
+        let hd = ["a"];
+        console.log(hd.concat("b"));
+        console.log(hd);
+
+        function User() { }
+        User.__proto__.view = function () {
+            console.log("User function view method");
+        };
+        User.view();
+
+        // 使用 setPrototypeOf 与 getPrototypeOf 获取与设置原型
+        let hd2 = {};
+        let parent = { name: "parent" };
+        Object.setPrototypeOf(hd2, parent);
+        console.log(hd2);
+        console.log(Object.getPrototypeOf(hd2));
+
+        // constructor
+
+        // 原型链
+        let obj = {
+            name: "后盾人"
+        };
+        let hd3 = {
+            web: "houdunren"
+        };
+        let cms = {
+            soft: "hdcms"
+        };
+        Object.setPrototypeOf(obj, hd3);
+        Object.setPrototypeOf(hd3, cms);
+        console.log(obj.web);
+        console.log(Object.getPrototypeOf(hd3) === cms);
+
+        function A() { }
+        function B() { }
+        function C() { }
+
+        const c = new C();
+        B.prototype = c;
+        const b = new B();
+        C.prototype = b;
+        const a = new A();
+
+        console.dir(a instanceof A); //true
+        console.dir(a instanceof B); //true
+        console.dir(a instanceof C); //true
+        console.dir(b instanceof C); //true
+        console.dir(c instanceof B); //false
+
+        // 使用isPrototypeOf检测一个对象是否是另一个对象的原型链中
+
+
+    </script>
+</body>
+
+</html>

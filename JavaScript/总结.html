@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(a);
+        b();
+        var a = 1;
+        function b() {
+            console.log('this is a function');
+        }
+
+        var a;
+        function b() {
+            console.log('this is a function');
+        }
+
+        console.log(a);
+
+        // var a = 2;
+        // function add() {
+        //     var b = 1
+        //     return a + b;
+        // }
+        // console.log(add());
+
+
+        // function runStack(n) {
+        //     if (n === 0) return 100;
+        //     return runStack(n - 2);
+        // }
+        // console.log(runStack(500));
+
+
+
+        // let x = 1;
+        // if (true) {
+        //     let x = 2;  // 不同的变量
+        //     console.log(x);  // 2
+        // }
+        // console.log(x);  // 
+
+        let x = 1;
+        {
+            let x = 2;
+            {
+                let b = 1;
+                // 因为let不允许在同一作用域重复声明
+                // 验证这里是否是一个块级作用域
+                // let x = 3;
+                console.log(x);
+            }
+            ...
+        }
+        ....
+
+        var a = 1;
+        var b = a;
+        b = 3;
+        console.log(a);
+        console.log(b);
+
+        var c = function () {
+
+        }
+        var d = c;
+        d.name = "wyx";
+        console.log(c.name);
+        console.log(d.name);
+
+
+        function foo() {
+            var a = 1
+            let b = 2
+            var c
+            {
+                let b = 3
+                c = 4
+                let d = 5
+                console.log(a)
+                console.log(b)
+            }
+            console.log(b)
+            console.log(c)
+            console.log(d)
+        }
+        foo()
+    </script>
+</body>
+
+</html>

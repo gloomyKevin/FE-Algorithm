@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 标志法
+        let hasCycle = function (head) {
+            while (head) {
+                if (head.flag) return true;
+                head.flag = true;
+                head = head.next;
+            }
+            return false;
+        }
+
+    </script>
+</body>
+
+</html>

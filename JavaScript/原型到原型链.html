@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person() {
+
+        }
+        var person = new Person();
+        console.log(person.__proto__ === Person.prototype);
+        // 补充
+        console.log(Object.getPrototypeOf(person) === Person.prototype);
+
+        console.log(Person.prototype.constructor === Person);
+
+        // 向上查找
+        function Person() {
+
+        }
+
+        Person.prototype.name = "kevin";
+        var wyx = new Person();
+        console.log(wyx.name);
+
+        wyx.name = "Tom";
+        console.log(wyx.name);
+
+        delete wyx.name;
+        console.log(wyx.name);
+
+        var obj = new Object();
+        obj.name = "objname";
+        console.log(obj.name);
+
+        // Object.prototype为null
+        console.log(Object.prototype.__proto__ === null);
+
+        // 补充细节,关于wyx.constructor
+        console.log(wyx.constructor === Person);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = 2
+        function add(b, c) {
+            console.trace();
+            return b + c
+        }
+        function addAll(b, c) {
+            var d = 10
+            result = add(b, c)
+            return a + result + d
+        }
+        addAll(3, 6)
+
+        // function runStackPromise(n) {
+        //     if (n === 0) return Promise.resolve(100)
+        //     return Promise.resolve(n - 2).then(runStackPromise)
+        // }
+
+        // runStackPromise(500000).then(console.log)
+
+
+        var myname = "极客时间"
+        function showName() {
+            console.log(myname);
+            if (0) {
+                var myname = "极客邦"
+            }
+            console.log(myname);
+        }
+        showName()
+
+        // 作用域链
+
+        function bar() {
+            console.log(myName)
+        }
+        function foo() {
+            var myName = "极客邦"
+            bar()
+        }
+        var myName = "极客时间"
+        foo()
+    </script>
+</body>
+
+</html>

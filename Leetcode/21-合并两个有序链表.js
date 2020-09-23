@@ -94,3 +94,33 @@ var mergeTwoLists = function (l1, l2) {
     curr.next = l1 ? l1 : l2;
     return dummy;
 }
+
+// 再联系:合并两个有序
+var mergeArr(nums1, m, nums2, n){
+    let len1 = m - 1,
+        len2 = n - 1,
+        len = m + n - 1;
+    while (len2 >= 0) {
+        if (len1 < 0) {
+            nums1[len--] = nums2[len2--];
+        }
+        nums1[len--] = nums1[len1--] > nums2[len2--] ? nums1[len1--] : nums2[len2--]
+    }
+}
+
+// 链表合并的递归操作
+function mergeTwoList(l1, l2) {
+    if (l1 === null) {
+        return l2
+    }
+    if (l2 === null) {
+        return 11
+    }
+    if (l1.val <= l2.val) {
+        l1.next = mergeTwoList(l1.next, l2);
+        return l1;
+    } else {
+        l2.next = mergeTwoList(l2.next, l1);
+        return l2;
+    }
+}
