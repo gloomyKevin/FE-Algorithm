@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 从低位相加
+        // var addStrings = function (num1, num2) {
+        //     let a = num1.length,
+        //         b = num2.length,
+        //         tem = 0,
+        //         result = '';
+        //     while (a || b) {
+        //         a ? temp += +num1[--a] : '';
+        //         b ? temp += +num2[--b] : '';
+
+        //         result = tmp % 10 + result;
+        //         if (tmp > 9) tmp = 1;
+        //         else tmp = 0;
+        //     }
+        //     if (tmp) result = 1 + result;
+        //     return result;
+        // }
+
+        // var addStrings = function (num1, num2) {
+        //     let a = num1.length,
+        //         b = num2.length,
+        //         temp = 0,
+        //         result = '';
+        //     while (a || b) {
+        //         a ? temp += num1[--a] : '';
+        //         b ? tmp += num2[--b] : '';
+
+        //         result = tmp % 10 + result;
+        //         if (tmp > 9) {
+        //             tmp = 1;
+        //         } else {
+        //             tmp = 0;
+        //         }
+        //     }
+        //     if (tmp) result = result + 1;
+        //     return result;
+        // }
+
+        // var addStrings = function (num1, num2) {
+        //     let a = num1.length,
+        //         b = num2.length,
+        //         tmp = 0,
+        //         result = '';
+        //     while (a || b) {
+        //         a ? tmp += num1[--a] : '';
+        //         a ? tmp += num2[--b] : '';
+
+        //         result = tmp % 10 + result;
+        //         tmp = tmp > 9 ? 1 : 0;
+        //     }
+        //     if (tmp) result += 1;
+        //     return result;
+        // }
+
+        var addStrings = function (num1, num2) {
+            let a = num1.length,
+                b = num2.length,
+                result = '',
+                tmp = 0;
+
+            while (a || b) {
+                a ? tmp += +num1[--a] : '';
+                b ? tmp += +num2[--b] : '';
+
+                result = tmp % 10 + result
+                if (tmp > 9) tmp = 1
+                else tmp = 0
+            }
+            if (tmp) result = result + 1;
+            return result;
+        }
+    </script>
+</body>
+
+</html>

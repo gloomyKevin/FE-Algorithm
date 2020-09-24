@@ -8,7 +8,41 @@
 </head>
 
 <body>
+    <script>
+        // 维护数组
+        // 使用数组维护滑动窗口
+        // 找到了,直接删除,因为max在没找到并插入的 时候刷新
+        // 没找到,push进数组
+        // var lengthOfLongestSubstring = function (s) {
+        //     let arr = [], max = 0;
+        //     for (let i = 0; i < s.length; i++) {
+        //         let index = arr.indexOf(s[i]);
+        //         if (index !== -1) {
+        //             arr.splice(0, index + 1);
+        //         }
+        //         arr.push(s.charAt(i));
+        //         max = Math.max(arr.length, max);
+        //     }
+        // }
 
+        var lengthOfLongestSubstring = function (s) {
+            let arr = [], max = 0;
+            for (let i = 0; i < s.length - 1; i++) {
+                let index = arr.indexOf(s[i])
+                if (index !== -1) {
+                    arr.splice(0, index + 1);
+                }
+                arr.push(s.charAt(i));
+                max = Math.max(arr.length, max);
+            }
+            return max;
+        }
+
+        // 使用下标 维护滑动窗口
+
+        // 使用优化的map
+
+    </script>
 </body>
 
 </html>
