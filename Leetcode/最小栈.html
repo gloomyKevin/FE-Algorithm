@@ -9,32 +9,58 @@
 
 <body>
     <script>
+        // var MinStack = function () {
+        //     this.item = [];
+        //     this.min = null;
+        // }
+
+        // // 进栈
+        // MinStack.prototype.push = function (x) {
+        //     if (!this.items.length) this.min = x;
+        //     this.min = Math.min(x, this.min)
+        //     this.items.push(x)
+        // }
+
+        // // 出栈
+        // MinStack.prototype.pop = function () {
+        //     let num = this.items.pop()
+        //     this.min = Math.min(...this.items)
+        //     return num
+        // }
+
+        // // 获取栈顶元素
+        // MinStack.prototype.top = function () {
+        //     if (!this.item.length) return null;
+        //     return this.items[this.items.length - 1];
+        // }
+
+        // // 检索栈中的最小元素
+        // MinStack.prototype.getMin = function () {
+        //     return this.min;
+        // }
+
         var MinStack = function () {
             this.item = [];
             this.min = null;
         }
 
-        // 进栈
         MinStack.prototype.push = function (x) {
-            if (!this.items.length) this.min = x;
-            this.min = Math.min(x, this.min)
-            this.items.push(x)
+            if (!MinStack) this.min = x
+            this.min = Math.min(this.min, x);
+            this.item.push(x);
         }
 
-        // 出栈
         MinStack.prototype.pop = function () {
-            let num = this.items.pop()
-            this.min = Math.min(...this.items)
-            return num
+            let num = this.item.pop();
+            this.min = Math.min(...this.item);
+            return num;
         }
 
-        // 获取栈顶元素
         MinStack.prototype.top = function () {
             if (!this.item.length) return null;
-            return this.items[this.items.length - 1];
+            return this.item.[this.item.length - 1];
         }
 
-        // 检索栈中的最小元素
         MinStack.prototype.getMin = function () {
             return this.min;
         }

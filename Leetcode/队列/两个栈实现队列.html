@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var CQueue = function () {
+        //     this.stack1 = [];
+        //     this.stack2 = [];
+        // }
+
+        // CQueue.prototype.appendTail = funtion(value){
+        //     this.stack1.push(value);
+        // }
+
+        // CQueue.prototype.deleteHead = function () {
+        //     if (this.stack.length) {
+        //         return this.stack2.pop()
+        //     }
+        //     if (!this.stack1.length) {
+        //         return -1;
+        //     }
+        //     while (this.stack1.length) {
+        //         this.stack2.push(this.stack1.pop());
+        //     }
+        //     return this.stack2.pop();
+        // }
+
+        var CQueue = function () {
+            this.stack1 = [];
+            this.stack2 = [];
+        }
+
+        CQueue.prototype.appendTail = function (value) {
+            this.stack1.push(value);
+        }
+
+        CQueue.prototype.deleteHead = function () {
+            if (!this.stack2.length) {
+                return this.stack1.pop()
+            }
+            if (!stack1.length) {
+                return -1;
+            }
+            while (this.stack1.length) {
+                this.stack2.push(stack1.pop());
+            }
+            return this.stack2.pop();
+        }
+    </script>
+</body>
+
+</html>
