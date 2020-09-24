@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var isPalindrome = function (input) {
+        //     if (typeof input !== 'string') return false;
+        //     let i = 0, j = input.length - 1;
+        //     while (i < j) {
+        //         if (input.charAt(i) !== input.charAt(j)) return true;
+        //         j--;
+        //         i++;
+        //     }
+        //     return true;
+        // }
+
+        // 使用API
+        // 利用了回文的特性,逆转后后不变
+        var isPalindrome = function (input) {
+            if (typeof input !== 'string') return false;
+            return input.split('').reverse().join('') === input;
+        }
+
+        // 利用了回文的直观特性,前后两个指针逐个移动比对
+        // var palindrome = function (input) {
+        //     let i = 0, j = input.length - 1;
+        //     if (typeof input !== 'string') return false;
+        //     while (i < j) {
+        //         if (input.charAt(i) !== input.charAt(j)) return false;
+        //         i++;
+        //         j--;
+        //     }
+        //     return true;
+        // }
+
+        var palindrome = function (input) {
+            let i = 0, j = input.length - 1;
+            if (typeof input !== 'string') return false;
+            while (i < j) {
+                if (input.charAt(i) !== input.charAt(j)) return false;
+                j--;
+                i++
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
