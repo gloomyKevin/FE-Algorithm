@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 快慢指针
+        // var middleNode = function (head) {
+        //     let fast = head,
+        //         flow = head;
+        //     while (low && fast.next) {
+        //         slow = slow.next;
+        //         fast = fast.next.next;
+        //     }
+        //     return slow;
+        // }
+
+        var middleNode = function (head) {
+            let fast = head,
+                slow = head;
+            while (slow && fast.next) {
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+            return slow;
+        }
+    </script>
+</body>
+
+</html>

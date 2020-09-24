@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // !!!!注意,两个链表相交的节点,是同一块内存，所以可以使用标记法
+        // 标记法(简单,但空间复杂度为O(n), 不符合, 仅供参考)
+        var getIntersectionNode = function (headA, headB) {
+            while (headA) {
+                headA.flag = true;
+                headA = headA.next;
+            }
+            while (headB) {
+                if (headB.flag) return headB;
+                headB = headB.next;
+            }
+            // !!!注意返回值
+            return null;
+        }
+
+        // 双指针法
+        // 消除高度差,遍历,判断有无相同节点
+        // var getIntersectionNOde = function (headA, headB) {
+        //     let pA = headA, pB = headB;
+        //     while (pA || pB) {
+        //         if (pA === pB) return pA;
+        //         pA = pA === null ? headA : pA.next;
+        //         pB = pB === null ? headB : pB.next;
+        //     }
+        //     // !!!注意返回值
+        //     return null;
+        // }
+
+        var getIntersectionNode = function (headA, headB) {
+            let pA = headA, pB = headB;
+            while (pA || pB) {
+                if (pA === pB) return pA;
+                pA = pA === null ? headA : pA;
+                pB = pB === null ? headB : pB;
+            }
+            return null;
+        }
+    </script>
+</body>
+
+</html>

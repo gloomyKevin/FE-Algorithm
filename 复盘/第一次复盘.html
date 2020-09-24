@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 合并两个有序数组,双指针法
+        var mergeTwoArray = function (nums1, m, nums2, n) {
+            let len1 = m - 1, len2 = n - 1, len = m + n - 1;
+            while (len2 >= 0) {
+                if (len1 < 0) {
+                    nums1[len--] = nums2[len2--];
+                    // 复盘的时候忘记这个continue!!!!
+                    continue;
+                }
+                nums1[len--] = nums1[len1] > nums2[len2] ? nums1[len1--] : nums2[len2--];
+            }
+        }
+
+        // 两数之和
+        var twoNumber = function (nums, n) {
+            let map = new Map();
+            let
+        }
+
+        // 数组交集
+        // filter过滤,set去重
+        var intersection = function () {
+            return [...new Set(mums1.filter((item) => nums2.includes(item)))]
+        }
+
+        // 合并两个有序链表
+        var mergeListNode = function (l1, l2) {
+            if (l1 === null) {
+                return l2;
+            }
+            if (l2 === null) {
+                return l1;
+            }
+            if (l1.val < l2.val) {
+                l1.next = merge(l1.next, l2);
+                // 注意return!!!
+                return l1;
+            } else {
+                l2.next = merge(l2.next, l1);
+                // 注意return!!!
+                return l2;
+            }
+        }
+
+        // 判断单链表是否有环
+        var hasCycle = function (head) {
+            while (head) {
+                if (head.flag) return true;
+                head.flag = true;
+                head = head.next;
+            }
+            return false;
+        }
+
+        // 判断单链表是否有环
+        // 双指针法
+        var hasCycle2 = function (head) {
+            if (!head || !head.next) {
+                return false;
+            }
+            while (fast.next !== slow) {
+                if (!fast || !fast.next) {
+                    return false;
+                }
+                fast = fast.next.next;
+                slow = slow.next;
+            }
+            // 注意return的位置和值
+            return true;
+        }
+
+        // 反转链表
+
+        // 迭代法
+        var reverseLinkedList = function (head) {
+            if (!head || !head.next) {
+                return;
+            }
+            var pre = null, curr = head;
+            while (curr) {
+                var next = curr.next;
+                curr.next = pre;
+                curr = pre;
+                next = curr;
+            }
+            // 这两步是细节, 不要忘记
+            head = pre;
+            return head;
+        }
+
+        // 反转链表
+        // 递归法
+        var reverseLinkedList2 = function (head) {
+            // if (!head || !head.next) return;
+            // var next = head.next;
+            // var reverseHead = reverseList2(next);
+            // next.next = head;
+            // head.next = null;
+            // return reverseHead;
+            if (!head || !head.next) {
+                // 注意返回值!!!
+                return head;
+            }
+            let next = head.next;
+            let reverseHead = reverseLinkedList2(next);
+            next.next = head;
+            head.next = null;
+            // 注意返回值
+            return reverseHead;
+        }
+
+        // 求链表的中间结点
+        // 双指针法
+        var middleNode = function (head) {
+            let fast = head,
+                slow = head;
+            // !!!注意判断条件
+            while (fast && fast.next) {
+                fast = fast.next.next;
+                slow = slow.next;
+            }
+            // 注意返回值!!!!
+            return true;
+        }
+
+        // 删除链表倒数第n个结点
+        // 快慢指针,哨兵节点
+        var removeNthNode = function () {
+            let pre = new Node(0);
+            pre.next = head;
+
+        }
+
+        // 找链表相交的起始节点
+        // 标记法
+        // 空间复杂度为O(n),不参考
+        var getIntersectionNode = function (headA, headB) {
+            while (headA) {
+                headA.flag = true;
+                headA = headA.next;
+            }
+            while (headB) {
+                if (headB.flag) return headB;
+                headB = headB.next;
+            }
+            // !!!注意返回值
+            return null;
+        }
+
+        // 找链表相交的起始节点
+        // 双指针法
+        // 对齐链表, 遍历,判断
+        var getIntersectionNode = function (headA, headB) {
+            let pA = headA,
+                pB = headB;
+            while (pA || pB) {
+                if (pA === pB) return pA;
+                pA = pA === null ? headB : pA.next;
+                pB = pB === null ? headA : pB.next;
+            }
+            // !!!注意返回值
+            return null
+        }
+
+        // 有效三角形的个数
+        // 排序+双指针
+        var triangleNumber = function (nums) {
+            if (!nums || nums.length < 3) return 0;
+            let count = 0;
+            name.sort((a, b) => a - b);
+            for (let k = nums.length - 1; k > 1; k--) {
+                let i = 0, j = k - 1;
+                while (i < j) {
+                    if (nums[i] + nums[j] > nums[k]) {
+                        count += j - i;
+                        j--;
+                    } else {
+                        i++;
+                    }
+                }
+            }
+            return count;
+        }
+    </script>
+</body>
+
+</html>

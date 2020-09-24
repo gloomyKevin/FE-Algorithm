@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 方案一
+        // 双指针法
+        // 使用哨兵节点
+        // var removeNthFormEnd = function (head, n) {
+        //     let preHead = new ListNode(0);
+        //     preHead.next = head;
+        //     let fast = preHead,
+        //         slow = preHead;
+        //     while (n--) {
+        //         fast = fast.next;
+        //     }
+        //     while (fast && fast.next) {
+        //         fast = fast.next;
+        //         slow = slow.next;
+        //     }
+        //     slow.next = slow.next.next;
+        //     return head;
+        // }
+
+        var removeNthFormEnd = function (n, head) {
+            let preHead = new ListNode(0);
+            preHead.next = head;
+            let fast = preHead,
+                slow = preHead;
+            // 使用哨兵节点,使用fast.next和slow.next代表指示节点
+            while (n--) {
+                fast = fast.next;
+                slow = slow.next;
+            }
+            slow.next = slow.next.next;
+            // 一定要注意返回值
+            return head;
+        }
+    </script>
+</body>
+
+</html>
