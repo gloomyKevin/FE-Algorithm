@@ -45,9 +45,11 @@
             while (s.charAt(right) === '') right++;
             while (left < right) {
                 let char = s.charAt(left);
+                // 拼接空格且还有单词剩余
                 if (char === '' && word) {
                     queue.unshift(word);
                     word = '';
+                    // 按序拼接单词
                 } else if (char !== ' ') {
                     word += char;
                 }
@@ -55,6 +57,51 @@
             }
             queue.unshift(word);
             return queue.join("");
+        }
+
+        var reverseWords = function (s) {
+            let left = 0,
+                right = 0,
+                queue = [],
+                word = '';
+            while (left === ' ') left++;
+            while (right === ' ') right--;
+            while (left < right) {
+                let char = s.charAt(left);
+                if (char === ' ' && word) {
+                    queue.unshift(word);
+                    word = '';
+                }
+                if (char !== ' ') {
+                    char += word;
+                }
+                left++
+            }
+            queue.unshift(word);;
+            return join(' ');
+        }
+
+        var reverseWords = function (s) {
+            let left = 0,
+                right = s.length - 1,
+                queue = [],
+                word = '';
+            while (s.charAt(left) === ' ') left++;
+            while (s.charAt(right) === '') right--;
+            while (left < right) {
+                let char = s.charAt(left);
+                if (char === ' ' && word) {
+                    queue.unshift(word);
+                    word = ' ';
+                }
+                if (char !== ' ') {
+                    // 踩坑!!!之前写反了 
+                    word += char;
+                }
+                left++;
+            }
+            queue.unshift(word);
+            return queue.join('');
         }
     </script>
 </body>
