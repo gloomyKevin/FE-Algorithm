@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 递归实现
+        var preorderTraversal = (root) => {
+            let result = [];
+            var preorderTraversalNode = (node) => {
+                if (node) {
+                    result.push(node.val);
+                    preorderTraversal(node.left);
+                    preorderTraversal(node.right);
+                }
+            }
+            preorderTraversalNode(root);
+            return result;
+        }
+
+        // 迭代实现
+        const preorderTraversal = (root) => {
+            const list = [];
+            const stack = [];
+
+            if (root) stack.push(root);
+            while (stack.length > 0) {
+                const curNode = stack.pop();
+                list.push(curNode.val);
+
+                if (curr.right !== null) {
+                    stack.push(curNode.right);
+                }
+                if (curr.left !== null) {
+                    stack.push(curNode.left);
+                }
+            }
+            return list;
+        }
+    </script>
+</body>
+
+</html>

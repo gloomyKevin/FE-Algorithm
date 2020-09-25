@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 异步加载图片
+        function loadImageAsync(url) {
+            return new Promise(function (resolve, reject) {
+                const image = new Image();
+
+                image.onload = function () {
+                    resolve(image);
+                }
+
+                image.onerror = function () {
+                    reject(new Error('could not load image' + url));
+                }
+                image.src = url;
+            })
+        }
+
+        // Promise实现Ajax
+        const getJSON = function (url) {
+            const promise = new Promise(function (resolve, reject) {
+                const handler = function () {
+                    if (this.readyState !== 4) {
+                        return;
+                    }
+                    if (this.status === 200) {
+                        resolve(this.response);
+                    } else {
+                        reject(new Error(this.status.statusText));
+                    }
+                }
+                const client = new XMLHttpRequest();
+                client.open("GET", url);
+                client.onreadystatechange = handler;
+                client.responseType = "json";
+                client.setRequestHeader("Accept", "application/json");
+                client.send();
+            })
+            return promise;
+        }
+
+        getJSON("/posts.json").then(function (json) {
+            console.log('Contents ' + json);
+        }, function (error) {
+            console.error('出错了', error);
+        })
+
+        class Promise {
+            constructor(executor) {
+                this.state = 'pending';
+                this.value = undefined;
+                this.reason = undefined;
+                this.onResolvedCallbacks = [];
+                this.onRejectedCallbacks = [];
+
+                let resolve = value => {
+                    if (this.state === 'pending') {
+                        this.state = 'fulfilled';
+                        this.value = value;
+                        this.onResolvedCallbacks.forEach(fn => fn());
+                    }
+                };
+                let reject = reason => {
+                    if (this.state === 'pending') {
+                        this.state = 'rejected';
+                        this.reason = reason;
+                        this.onRejectedCallbacks.forEach(fn => fn());
+                    }
+                };
+                try {
+                    executor
+                } catch (err) {
+                    reject(err);
+                }
+            }
+        }
+
+        // class Promise {
+        //     constructor(executor) { };
+        //     then(onFulfilled, onRejected) {
+        //         if (this.state === 'fulfilled') {
+        //             onFulfilled(this.value);
+        //         };
+        //         if (this.state === 'rejected') {
+        //             onRejected(this.reason);
+        //         }
+        //     }
+        // }
+        then(onFulfilled, onRejected){
+            if (this.state === 'fulfilled') {
+                onFulfilled(this.value);
+            };
+            if (this.state === 'rejected') {
+                onRejected(this.reason);
+            };
+        }
+    </script>
+</body>
+
+</html>

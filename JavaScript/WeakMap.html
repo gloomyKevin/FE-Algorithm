@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let wm = new WeakMap(),
+        //     element = document.querySelector(".element");
+
+        // let value = wm.get(element);
+        // console.log(value);
+
+        // 强引用
+        let map = new Map();
+        let key = new Array(5 * 1024 * 1024);
+
+        // 建立map对key的强引用
+        map.set(key, 1);
+        // key = null不会导致key的原引用对象被回收
+        key = null;
+
+        const privateData = new WeakMap();
+
+        class Person {
+            constructor(name, age) {
+                privateData.set(this, { name: name, age: age });
+            }
+
+            getName() {
+                return privateData.get(this).name;
+            }
+        }
+        export default Person;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function* gen(x) {
+            var x = yield x + 2;
+            return 2;
+        }
+
+        var g = gen(1);
+        g.next()
+        g.next()
+
+        function* grn(x) {
+            var x = yield x + 2;
+            return y;
+        }
+
+        var g = gen(1);
+        g.next();
+        g.next(2);
+
+        // 部署错误处理的代码
+        function* gen(x) {
+            try {
+                var y = yield x + 2;
+            } catch (e) {
+                console.log(e);
+            }
+            return y;
+        }
+
+        var g = gen(1);
+        g.next();
+        g.throw('出错了');
+
+        // 异步任务的封装
+        var fetch = require('node-fetch');
+
+        function* gen() {
+            var url = 'https://baidu.com';
+            var result = yield fetch(url);
+            console.log(result.bio);
+        }
+
+        // 执行代码
+        var g = gen();
+        var result = g.next();
+
+        // async部分
+        async function hd() {
+            return "houdunren.com";
+        }
+        console.log(hd());
+        hd.then(value => {
+            console.log(value);
+        })
+
+        // 多个await需要排队执行完成
+        async function hd() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(message);
+                }, 2000);
+            });
+        }
+        async function run() {
+            let h1 = await hd("后盾人");
+            console.log(h1);
+            let h2 = await hd("houdunrem.com");
+            console.log(h2);
+        }
+        run();
+
+        // 在await这一行暂停执行, 直到等到promise返回结果后执行
+        async function hd() {
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("houdunren.com");
+                }, 2000);
+            });
+            let result = await promise;
+            console.log(result);
+        }
+
+        // 一般await后面是外部其它promise对象
+
+        // 请求后台获取用户课程成绩
+        async function user() {
+            let user = await ajax(``);
+            let lessons = await (``);
+            console.log(lessons);
+        }
+
+        // 将操作放在立即执行函数
+        (async function user() {
+            let user = await ajax(``);
+            let lessons = await (``);
+            console.log(lessons);
+        })();
+
+        // 使用async设置定时器, 间隔时间输出内容
+        async function sleep(ms = 2000) {
+            return new Promise(resolve => {
+                setTimeout(resolve, ms);
+            });
+        }
+        async function run() {
+            for (const value of ["1", "2"]) {
+                await sleep();
+                console.log(value);
+            }
+        }
+        run();
+
+        // 加载进度
+
+
+    </script>
+</body>
+
+</html>

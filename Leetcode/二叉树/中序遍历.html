@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 递归实现
+        var inorderTraversal = (root) => {
+            let result = [];
+            var inorderTraversalNode = (node) => {
+                if (node) {
+                    inorderTraversal(node.left);
+                    result.push(node.val);
+                    inorderTraversal(node.right);
+                }
+            }
+            inortTraversal(root);
+            return result;
+        }
+
+        // 迭代实现
+        var inortTraversal = function (root) {
+            let list = [];
+            let stack = [];
+            let node = root;
+            while (stack.length || node) {
+                if (node) {
+                    stack.push(node);
+                    node = node.left;
+                    continue;
+                }
+                node = stack.pop();
+                list.push(node.val);
+                node = node.right;
+            }
+            return list;
+        }
+
+        // 迭代实现的简化
+        const inorderTraversal = (root) => {
+            let list = [],
+                stack = [],
+                node = root;
+            while (node || stack.length) {
+                while (node) {
+                    stack.push(node);
+                    // 先展示右子树,所以先入栈左子树
+                    node = node.left;
+                }
+
+                node = stack.pop();
+                list.push(node.val);
+                node = node.right;
+            }
+        }
+    </script>
+</body>
+
+</html>

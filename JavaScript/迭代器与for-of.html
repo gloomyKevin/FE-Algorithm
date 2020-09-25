@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 用ES5创建迭代器
+        // function createIterator(items) {
+        //     var i = 0;
+        //     return {
+        //         next: function () {
+        //             var done = i => item.length;
+        //             var value = !done ? items[i++] : undefined;;
+
+        //             return {
+        //                 done: done,
+        //                 value: value
+        //             }
+        //         }
+        //     }
+        // }
+
+        // var iterator = create([1, 2, 3]);
+
+        const obj = {
+            value: 1
+        }
+
+        // 为obj部署iterator接口
+        obj[Symbol.iterator] = function () {
+            return createIterator([1, 2, 3]);
+        }
+
+        for (value of obj) {
+            console.log(value);
+        }
+    </script>
+</body>
+
+</html>
