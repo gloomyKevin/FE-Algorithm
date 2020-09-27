@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let KthSmallest = function (root, k) {
+            let res = null;
+            let inOrderNode = function (node) {
+                if (node !== null && k > 0) {
+                    inOrderNode(node.left);
+                    if (--k === 0) {
+                        res = node.val;
+                        return
+                    }
+                    inOrderNode(node.right);
+                }
+            }
+            inOrderNode(root);
+            return res;
+        }
+
+        // 复习中序遍历
+        var inorderTraversal = function (root) {
+            let res = [];
+            let inorderTraversalNode = (node) => {
+                if (node) {
+                    inorderTraversalNode(node.left);
+                    res = res.push(node);
+                    inorderTraversalNode(node.right);
+                }
+            }
+            inorderTraversal(root);
+            return res;
+        }
+
+        var KthSmallest = function (root) {
+            let res = null;
+            let inorder = function (node) {
+                inorder(node.left);
+                if (--k === 0) {
+                    res = node.val;
+                    return;
+                }
+                inorder(node.right);
+            }
+            inorder(root);
+            return res;
+        }
+    </script>
+</body>
+
+</html>

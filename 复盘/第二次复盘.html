@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var merge = function (nums1, m, nums2, n) {
+            let len1 = m - 1,
+                len2 = n - 1,
+                len = m + n - 1;
+            while (len2 >= 0) {
+                if (len1 < 0) {
+                    nums1[len--] = nums2[len2--];
+                    continue;
+                }
+                nums1[len--] = nums1[len1] >= nums2[len2] ? nums1[len1--] : nums2[len2--];
+            }
+        }
+
+        var twoSum = function (nums, target) {
+            let map = new Map();
+            for (let i = 0; i < nums.length; i++) {
+                let k = target - nums[i]
+                if (map.has(k)) {
+                    return [map, get(k), i];
+                }
+                map.set(nums[i], i)
+            }
+            return [];
+        }
+
+        var merge = function (nums1, m, num2, n) {
+            let len1 = m - 1,
+                len2 = n - 1,
+                len = m + n - 1;
+            while (len2 >= 0) {
+                if (len1 < 0) {
+                    nums1[len--] = nums2[len2--]
+                }
+                nums1[len--] = num1[len1] > nums2[len2] ? nums1[len1--] : nums2[len2--];
+            }
+        }
+
+        var twoSum = function (nums, target) {
+            for (let i = 0; i < nums.length; i++) {
+                let k = target - nums[i];
+                if (map.has(k)) {
+                    return [map.get(k), i];
+                }
+                map.set(nums[i], i);
+            }
+            return [];
+        }
+
+        let hasCycle = function (head) {
+            while (head) {
+                if (head.flag) return true;
+                head.flag = true;
+                head = head.next;
+            }
+            return false;
+        }
+
+        let reverseList = function (head) {
+            if (!head || !head.next) return head;
+            let prev = null,
+                curr = head;
+            while (curr) {
+                let next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
+            }
+            head = prev;
+            return head;
+        }
+
+        var middleNode = function () {
+            var fast = head, slow = head;
+            while (fast && fast.next) {
+                fast = fast.next.next;
+                slow = slow.next;
+            }
+            return slow;
+        }
+
+        var removeNthFromEnd = function (head, n) {
+            let preHead = new listNode(0);
+            preHead.next = head;
+
+            let fast = preHead, slow = preHead;
+            while (n--) {
+                fast = fast.next;
+            }
+
+            while (fast && fast.next) {
+                fast = fast.next;
+                slow = slow.next;
+            }
+            slow.next = slow.next.next;;
+            return preHead.next;
+        }
+
+        // var removeNthFromEnd = function (head, n) {
+        //     var preHead = new listNode(0);
+        //     preHead.next = head;
+
+        //     var fast = preHead, slow = preHead;
+        //     while (n--) {
+        //         fast = fast.next;
+        //     }
+
+        //     while (fast && fast.next) {
+        //         fast = fast.next;
+        //         slow = slow.next;
+        //     }
+        //     slow.next = slow.next.next;
+        //     return preHead.next;
+        // }
+
+        let triangle = function (nums) {
+            if (!nums || nums.length < 3) return 0;
+            var count = 0;
+            for (let k = num.length - 1; k > 1; k--) {
+                let i = 0, j = k - 1;
+                if (nums[i] + nums[j] > nums[k]) {
+                    count += j - i;
+                    j--;
+                } else {
+                    i++;
+                }
+            }
+            return count;
+        }
+
+        var isPalindrome = function (input) {
+            if (typeof input !== 'string') return false;
+            return input.split('').reverse().join('') === input;
+        }
+
+        var isPalindrome = function (input) {
+            if (typeof input !== 'string') return 0;
+            let i = 0, j = input.length - 1;
+            while (i < j) {
+                if (input.charAt(i) !== input.charAt(j)) {
+                    return false;
+                }
+                i++;
+                j--;
+            }
+            return true;
+        }
+
+        //  无重复的最长子串
+        // var lengthOfLongestSubstring = function (s) {
+
+        // }
+
+        // 删除字符串相邻重复项
+        var removeDuplicates = function (s) {
+            let stack = [];
+            for (let c of s) {
+                let prev = stack.pop();
+                if (prev !== c) {
+                    stack.push(prev);
+                    stack.pish(c);
+                }
+            }
+            return stack.join("");
+        }
+
+        var firstUniqChar = function (s) {
+            if (!s) return "";
+            let map = new Map();
+            for (let c of s) {
+                if (map.has(c)) {
+                    map.set(c, map.get(c) + 1);
+                } else {
+                    map.set(c, 1);
+                }
+            }
+            for (let c of s) {
+                if (map.get(c) === 1) {
+                    return c;
+                }
+            }
+        }
+
+        var twoNum = function (nums, target) {
+            let map = new Map();
+            for (let i = 0; i < nums.length; i++) {
+                let k = target - nums[i];
+                if (map.has(k)) {
+                    return [map.get(k), i]
+                }
+                map.set(nums[i], i);
+            }
+            return [];
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let getLeastNumbers = function (arr, k) {
+            let heap = [,], i = 0;
+            while (i < k) {
+                heap.push(arr[i++])
+            }
+            buildHeap(heap, k);
+
+            for (let i = 0; i < arr.length; i++) {
+                if (heap[1] > arr[i]) {
+                    // 替换并堆化
+                    heap[1] = arr[i];
+                    heapify(heap, k, 1);
+                }
+                heap.shift();
+                return heap;
+            }
+        }
+
+        // 原地堆化, 从后往前, 自上而下式建大顶堆
+        let buildHeap = (arr, k) => {
+            if (k === 1) return;
+            for (let i = Math.floor(k / 2); i >= 1; i--) {
+                heapify(arr, k, 1);
+            }
+        }
+
+        let heapify = (arr, k, i) => {
+
+        }
+    </script>
+</body>
+
+</html>

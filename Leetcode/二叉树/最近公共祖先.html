@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var lowestCommonAncestor = function (root, p, q) {
+            if (root == null || root == p || root == q) return root;
+            const left = lowestCommonAncestor(root.left, p, q);
+            const right = lowestCommonAncestor(root.right, p, q);
+            if (left === null) return right;
+            if (right === null) return left;
+            return root;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 自底向上,后序遍历
+        // var isBalanced = function (root) {
+        //     return balanced(root) !== -1;
+        // }
+
+        // var balanced = function (node) {
+        //     if (!node) return 0;
+        //     const left = balanced(node.left);
+        //     const right = balanced(node.right);
+        //     if (left === -1 || right === -1 || Math.abs(left - right) > 1) {
+        //         return -1;
+        //     }
+        //     return Math.max(left, right) + 1;
+        // }
+
+        // var isBalanced = function (root) {
+        //     return balanced(root) !== -1;
+        // }
+
+        // var balance = function (node) {
+        //     if (!node) return 0;
+        //     const left = balanced(node.left);
+        //     const right = balanced(node.right);
+        //     if (left === -1 || right === -1 || Math.abs(left - right) > 1) {
+        //         return -1
+        //     }
+        //     return Math.max(left, right) + 1;
+        // }
+
+        // 回忆,返回二叉树深度
+        // var depth = function (node) {
+        //     if (!root) return 0;
+        //     return 1 + Math.max(depth(node.left), depth(node.right));
+        // }
+
+        var isBalanced = function (root) {
+            return balanced(root) !== -1
+        }
+
+        var balanced = function (node) {
+            if (!node) return 0;
+            const left = balanced(node.left);
+            const right = balanced(node.right);
+            if (left === -1 || right === -1 || Max.abs(left - right) > 1) {
+                return -1
+            }
+            return Math, max(left, right) + 1;
+        }
+    </script>
+</body>
+
+</html>

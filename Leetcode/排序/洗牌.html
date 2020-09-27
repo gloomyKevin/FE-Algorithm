@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let Solution = function (nums) {
+            this.nums = nums;
+        }
+
+        Solution.prototype.reset = function () {
+            return this.nums;
+        }
+
+        Solution.prototype.shuffle = function () {
+            let res = [...this.nums];
+            let n = res.length;
+            for (let i = n - 1; i >= 0; i--) {
+                let randomIndex = Math.floor(Math.random() * (i + 1));
+                [res[randomIndex], res[i]] = [res[i], res[randomIndex]];
+            }
+            return res;
+        }
+    </script>
+</body>
+
+</html>
