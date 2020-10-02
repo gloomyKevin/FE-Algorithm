@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 两两交换结点
+        var swapPairs = function (head) {
+            if (!head || !head.next) return head
+            let pre = new ListNode(null);
+            pre.next = head
+            let dummy = pre
+
+            while (pre.next && pre.next.next) {
+                let [fst, snd] = [pre.next, pre.next.next];
+                // pre.next = snd
+                // fsd.next = snd.next
+                // snd.next = fsd
+                // pre = fsd
+                [pre.next, fst.next, snd.next] = [snd, snd.next, fst]
+                pre = pre.next.next
+            }
+            return dummy.next
+        }
+    </script>
+</body>
+
+</html>

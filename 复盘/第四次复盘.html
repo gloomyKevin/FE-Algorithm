@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 合并两个有序数组
+        // 思路, 双指针法, 从后向前, 从大大小比较合并
+        var merge = function (nums1, m, nums2, n) {
+            let len1 = m - 1, len = n - 1, len = m + n - 1;
+            while (len2 >= 0) {
+                if (len1 < 0) {
+                    nums1[len--] = nums2[len2--];
+                    continue;
+                }
+                nums1[len--] = nums1[len1] > nums2[len2] ? nums1[len1--] : nums2[len2--];
+            }
+        }
+
+        // 两数之和
+        var twoNumber = function (nums, target) {
+            // if (nums.length < 2) return;
+            let map = new Map();
+            for (let i = 0; i < nums.length; i++) {
+                let k = target - nums[i];
+                if (map.has(k)) {
+                    return [map.get(k), i];
+                }
+                map.set(nums[i], i);
+            }
+            return [];
+        }
+
+        // 数组交集
+        // ES6, set, 过滤
+        var common = function (nums1, nums2) {
+            return [...new Set(nums1.filter((item) => nums2.includes(item)))];
+        }
+
+        // 多个数组的交集
+        var multiIntersection = function (...args) {
+            if (args.length === 0) return [];
+            if (args.length === 1) return args[0];
+            return [...new Set(args.reduce((result, arg) => {
+                return result.filter((item) => arg.includes(item))
+            }))]
+        }
+
+        // 多个数组的交集
+        var multiIntersection = function (args) {
+            return [...new Set(args.reduce((result, arg) => {
+                return result.filter((item) => arg.includes(item));
+            }))]
+        }
+
+        // 合并两个有序链表
+        // 递归
+        // var mergeLinkedList = function (l1, l2) {
+        //     if (l1 === null) {
+        //         return l2;
+        //     }
+        //     if (l2 === null) {
+        //         return l1;
+        //     }
+        //     if (l1.val < l2.val) {
+        //         l1.next = mergeLinkedList(l1.next, l2);
+        //         return l1;
+        //     } else {
+        //         l2.next = mergeLinkedList(l2.next, l1);
+        //         return l2;
+        //     }
+        // }
+
+        var mergeLinkedList = function (l1, l2) {
+            if (l1 === null) {
+                return l2;
+            }
+            if (l2 === null) {
+                return l1;
+            }
+            if (l1.val < l2.val) {
+                l1.next = mergeLinkedList(l1.next, l2);
+                return l1;
+            } else {
+                l2.next = mergeLinkedList(l2.next, l1);
+                return l2;
+            }
+        }
+
+        // 判断链表环
+        // 方法一:标志法
+        var hasCycle = function (head) {
+            while (head) {
+                if (head.flag) return true;
+                head.flag = true;
+                head = head.next;
+            }
+            return false;
+        }
+
+        // 方法二:双指针法
+        var hasCycle = function (head) {
+            if (!head || !head.next) {
+                return false;
+            }
+            let fast = head.next.next,
+                slow = head;
+            while (fast || fast.next) {
+                if (fast === slow) return true;
+                fast = fast.next.next
+                slow = slow.next
+            }
+            return false;
+        }
+
+        // 反转链表
+        var reverseLinkedList = function (head) {
+            if (!head || !head.next) return
+            let pre = null,
+                curr = head;
+            while (curr) {
+                let next = curr.next;
+                curr.next = pre;
+                pre = curr;
+                curr = next;
+            }
+            head = pre;
+            return head;
+        }
+
+        // 反转链表
+        // 递归法
+        // var reverseLinkedList = function (head) {
+        //     if (!head || !head.next) return head
+        //     let next = head.next
+        //     let reverseHead = reverseLinkedList(next)
+        //     next.next = head
+        //     head.next = null
+        //     return reverseHead
+        // }
+
+        // 链表中间结点
+        // let middleNode = function (head) {
+        //     let slow = head,
+        //         fast = head
+        //     while (fast && fast.next) {
+        //         fast = fast.next.next
+        //         slow = slow.next
+        //     }
+        //     return slow
+        // }
+
+        // 删除倒数第n个结点
+        // 注意哨兵节点, 以及n和n+1的判定, 返回值
+        var removeNthFromEnd = function (head, n) {
+            let pre = new ListNode(0)
+            pre.next = head
+            let fast = pre,
+                slow = pre
+            while (n--) {
+                fast = fast.next;
+            }
+            while (fast && fast.next) {
+                fast = fast.next
+                slow = slow.next
+            }
+            slow.next = slow.next.next
+            return pre.next
+        }
+
+        // 链表相交的起始节点
+        // 消除高度差, 双指针法
+        // 注意条件不成立时的return null
+        // var getIntersectionNode = function (headA, headB) {
+        //     let pA = headA,
+        //         pB = headB;
+        //     while (pA || pB) {
+        //         if (pA === pB) return pA
+        //         pA = pA === null ? headB : pA.next
+        //         pB = pB === null ? headA : pB.next
+        //     }
+        //     return null
+        // }
+
+        // 转换为数组
+        // var getIntersectionNode = function (headA, headB) {
+        //     let arr1 = [],
+        //         arr2 = [],
+        //         value = null
+        //     transformToArray(headA, arr1)
+        //     transformToArray(headB, arr2)
+
+        //     for (let i = 0; i < arr2.length; i++) {
+        //         if (arr1.indexOf(arr2[i] !== -1)) {
+        //             value = arr2[i]
+        //             return 'Reference of the node with value = ' + value;
+        //         }
+        //     }
+        //     return value
+        // }
+
+        // var transformToArray = function (head, arr) {
+        //     while (head) {
+        //         arr.push(head.val)
+        //         head = head.next
+        //     }
+        // }
+
+        // 有效三角形的个数
+        // 注意!数组需要先排序
+        // 返回的值以及其位置
+        var triangleNumber = function (nums) {
+            if (!nums || !nums.length < 3) return 0
+            let count = 0
+            nums.sort((a, b) => a - b)
+            for (let k = nums.length - 1; k > 1; k--) {
+                let i = 0, j = k - 1
+                while (i < j) {
+                    if (nums[i] + nums[j] === nums[k]) {
+                        count = j - i
+                        j--
+                    } else {
+                        i++
+                    }
+                }
+            }
+            return count
+        }
+
+        var triangleNumber = function (nums) {
+            if (!nums || nums.length < 3) return 0
+            let count = 0
+            nums.sort((a, b) => a - b)
+            for (let k = nums.length - 1; k > 1; k--) {
+                let i = 0, j = k - 1
+                while (i < j) {
+                    if (nums[i] + nums[j] > nums[k]) {
+                        count = j - i
+                        j--
+                    } else {
+                        i++
+                    }
+                }
+            }
+            return count
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -9,7 +9,42 @@
 
 <body>
     <script>
+        let quickSort = (arr) => {
+            quick(arr, 0, arr.length - 1);
+        }
 
+        let quick = (arr, left, right) => {
+            let index;
+            if (left < right) {
+                index = partition(arr, left, right);
+                if (left < index - 1) {
+                    quick(arr, left, index - 1);
+                }
+                if (right > index) {
+                    quick(arr, index, right);
+                }
+            }
+        }
+
+        let partition = (arr, left, right) => {
+            var datum = arr[Math.floor(Math.random() * (right - left + 1)) + left],
+                i = left,
+                j = right;
+            while (i <= j) {
+                while (arr[i] < datum) {
+                    i++
+                }
+                while (arr[j] > datum) {
+                    j--
+                }
+                if (i <= j) {
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                    i += 1;
+                    j -= 1;
+                }
+            }
+            return i;
+        }
     </script>
 </body>
 

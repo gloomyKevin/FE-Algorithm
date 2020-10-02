@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var triangleNumber = function (nums) {
+            if (!nums || nums.length < 3) return 0;
+            var count = 0
+
+            // !!!!一定是先排序再进行比较
+            nums.sort((a, b) => a - b);
+            for (let k = nums.length - 1; k > 1; k--) {
+                let i = 0, j = k - 1;
+                if (nums[i] + nums[j] === nums[k]) {
+                    count += j - i;
+                    j--
+                } else {
+                    i++
+                }
+            }
+            return count;
+        }
+    </script>
+</body>
+
+</html>

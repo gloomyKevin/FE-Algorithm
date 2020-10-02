@@ -9,6 +9,41 @@
 
 <body>
     <script>
+        // let getLeastNumbers = function (arr, k) {
+        //     let heap = [,], i = 0;
+        //     while (i < k) {
+        //         heap.push(arr[i++])
+        //     }
+        //     buildHeap(heap, k);
+
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (heap[1] > arr[i]) {
+        //             // 替换并堆化
+        //             heap[1] = arr[i];
+        //             heapify(heap, k, 1);
+        //         }
+        //         heap.shift();
+        //         return heap;
+        //     }
+        // }
+
+        // // 原地堆化, 从后往前, 自上而下式建大顶堆
+        // let buildHeap = (arr, k) => {
+        //     if (k === 1) return;
+        //     for (let i = Math.floor(k / 2); i >= 1; i--) {
+        //         heapify(arr, k, 1);
+        //     }
+        // }
+
+        // let heapify = (arr, k, i) => {
+        //     while (true) {
+        //         let maxIndex = i;
+        //         if (2 * i <= arr[2 * i] > arr[i]) {
+
+        //         }
+        //     }
+        // }
+
         let getLeastNumbers = function (arr, k) {
             let heap = [,], i = 0;
             while (i < k) {
@@ -16,28 +51,41 @@
             }
             buildHeap(heap, k);
 
-            for (let i = 0; i < arr.length; i++) {
+            for (let i = k; i < arr.length; i++) {
                 if (heap[1] > arr[i]) {
-                    // 替换并堆化
-                    heap[1] = arr[i];
-                    heapify(heap, k, 1);
+                    heapify(arr, k, i);
                 }
-                heap.shift();
-                return heap;
             }
+            heap.shift();
+            return heap;
         }
 
-        // 原地堆化, 从后往前, 自上而下式建大顶堆
-        let buildHeap = (arr, k) => {
+        let buildHeap = function (arr, k) {
             if (k === 1) return;
             for (let i = Math.floor(k / 2); i >= 1; i--) {
-                heapify(arr, k, 1);
+                heapify(arr, k, i)
             }
         }
 
+        // 堆化
         let heapify = (arr, k, i) => {
-
+            while (true) {
+                let maxIndex = i;
+                if (2 * i + 1 <= k && arr[2 * i] > arr[i]) {
+                    maxIndex = 2 * i;
+                }
+                if (2 * i + 1 <= k && arr[2 * i + 1] > arr[maxIndex]) {
+                    maxIndex = 2 * i + 1;
+                }
+                if (maxIndex !== i) {
+                    [arr[i], arr[maxIndex]] = [arr[maxIndex], arr[i]];
+                    i = maxIndex;
+                } else {
+                    break;
+                }
+            }
         }
+
     </script>
 </body>
 
