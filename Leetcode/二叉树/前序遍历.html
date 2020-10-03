@@ -42,6 +42,22 @@
             }
             return list;
         }
+
+        let preorderTraversal = (root) => {
+            let result = []
+            let preorderTraversalNode = (node) => {
+                if (node) {
+                    result.push(node.val)
+                    preorderTraversalNode(node.left)
+                    preorderTraversalNode(node.right)
+                }
+                preorderTraversal(root)
+                return result
+            }
+        }
+
+        // 迭代实现
+        // 模拟递归
     </script>
 </body>
 
