@@ -77,8 +77,22 @@
             return result;
         }
 
-        var maxSlidingWindow = function (nums, k) {
-
+        var maxSlidingWindow = function (num, k) {
+            let deque = [],
+                result = []
+            for (let i = 0; i < num.length; i++) {
+                if (i - deque[0] >= k) {
+                    deque.shift()
+                }
+                while (num[deque[deque.length - 1]] < num[i]) {
+                    deque.pop()
+                }
+                deque.push(i)
+                if (i >= k - 1) {
+                    result.push(num[deque[0]])
+                }
+            }
+            return result
         }
     </script>
 </body>
