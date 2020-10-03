@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var longestCommonPrefix = function (strs) {
+        //     if (strs === null || strs.length === 0) return ""
+        //     let trie = new Trie()
+        //     for (let i = 0; i < strs.length; i++) {
+        //         if (!trie.insert(strs[i])) return ""
+        //     }
+        //     return trie.searchLongestCommonPrefix();
+        // }
+
+        // var Trie = function () {
+        //     this.root = new TrieNode()
+        // }
+
+        // var TrieNode = function () {
+        //     this.next = {}
+        //     this.isEnd = true
+        // }
+
+        // Trie.prototype.insert = function (word) {
+        //     if (!word) return false
+        //     let node = this.root
+        //     for (let i = 0; i < word.length; i++) {
+        //         if (node.next[word[i]]) {
+        //             node.next[word[i]] = new TrieNode()
+        //         }
+        //         node = node.next[word[i]]
+        //     }
+        //     node.isEnd = true
+        //     return true
+        // }
+
+        // Trie.prototype.searchLongestCommonPrefix = function () {
+        //     let node = this.root
+        //     let pre = ''
+        //     while (node.next) {
+        //         let keys = Object.keys(node.next)
+        //         if (keys.length !== 1) break
+        //         if (node.next[keys[0]].isEnd) {
+        //             pre += keys[0]
+        //             break
+        //         }
+        //         pre += keys[0]
+        //         node = node.next[keys[0]]
+        //     }
+        //     return pre
+        // }
+
+        var longestCommonPrefix = function (strs) {
+            if (strs === null || strs.length === 0) return ""
+            let trie = new Trie()
+            for (let i = 0; i < strs.length; i++) {
+                if (!trie.insert(strs[i])) return ""
+                trie.insert(strs[i])
+            }
+            return trie.searchCommonPrefix()
+        }
+
+        var trie = function () {
+            this.root = new TrieNode()
+        }
+
+        var TireNode = function () {
+            this.next = {}
+            this.isEnd = false
+        }
+
+        var insert = function (word) {
+            if (!word) return false
+            let node = this.root
+            for (let i = 0; i < word.length; i++) {
+                if (node.next[word[i]]) {
+                    node.next[word[i]] = new TrieNode()
+                }
+                node = node.next[word[i]]
+            }
+            node.isEnd = true
+            return true
+        }
+
+        var searchCommonPrefix = function () {
+            let node = this.root
+            let pre = ""
+            while (node.next) {
+                let keys = Object.keys(node.next)
+                if (keys.length !== 1) break
+                if (node.next[keys[0]].isEnd) {
+                    pre += keys[0]
+                    break
+                }
+                pre += keys[0]
+                node = node.next[keys[0]]
+            }
+            return pre
+        }
+    </script>
+</body>
+
+</html>

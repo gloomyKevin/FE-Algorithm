@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 删除栈头, 即pre.stack = k-1的操作, 不写则默认丢弃
+        // var removeDuplicates = function (s, k) {
+        //     let stack = []
+        //     for (let c of s) {
+        //         let pre = stack.pop()
+        //         if (!pre || pre[0] !== c) {
+        //             stack.push(pre)
+        //             stack.push(c)
+        //         } else if (pre.length < k - 1) {
+        //             // 这一步是数量不达k, 累加栈头stack
+        //             stack.push(pre + c)
+        //         }
+        //     }
+        //     return stack.join('')
+        // }
+
+        var removeDuplicates = function (s, k) {
+            let stack = []
+            for (let c of s) {
+                // 注意!!pre是一个字符串而非数组
+                let pre = stack.pop()
+                if (!pre || pre[0] !== c) {
+                    stack.push(pre)
+                    stack.push(c)
+                } else if (pre.length < k - 1) {
+                    stack.push(pre + c)
+                }
+            }
+            return stack.join('')
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var reorderList = function (head) {
+            let pre = new ListNode(0)
+            pre.next = head
+
+            let middle = middleNode(head)
+            let right = middle.next
+            middle.next = null
+            let left = head
+
+            right = reorderList(right)
+
+            mergeTwoLists(left, right)
+        }
+
+        var middleNode = function (head) {
+            let fast = head,
+                slow = head
+            while (fast && fast.next) {
+                fast = fast.next.next
+                slow = slow.next
+            }
+            return slow
+        }
+
+        var mergeTwoLists = function (l1, l2) {
+            while (left && right) {
+                let p = l1.next,
+                    q = l2.next
+                l2.next = l1.next
+                l1.next = l2
+                l1 = p
+                l2 = q
+            }
+        }
+
+        var reverseList = function (head) {
+            if (!head || !head.next) return head
+            let pre = null,
+                curr = head
+
+            while (curr) {
+                let next = curr.next
+                curr.next = pre
+                pre = curr
+                curr = next
+            }
+            head = pre
+            return head
+        }
+    </script>
+</body>
+
+</html>

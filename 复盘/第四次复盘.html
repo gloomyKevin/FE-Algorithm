@@ -250,6 +250,39 @@
             return count
         }
 
+        // 翻转字符串内单词
+        var reverseWords = function (s) {
+            let left = 0,
+                right = s.length - 1,
+                queue = [],
+                word = ''
+            while (s.charAt(left) === ' ') left++
+            while (c.charAt(right) === ' ') right--
+
+            while (left < right) {
+                let char = s.charAt(left)
+                if (char === ' ' && word) {
+                    queue.unshift(word)
+                    word = ''
+                } else if (char !== ' ') {
+                    word += char
+                }
+                left++
+            }
+            queue.unshift(word)
+            return queue.join(' ')
+        }
+
+        // 翻转字符串内单词
+        // 使用filter
+        var reverseWords = function (s) {
+            return s.split(' ').filter(item => item).reverse().join(' ')
+        }
+        // 使用正则表达式
+        var reverseWords = function (s) {
+            return s.trim().split(/\s+/).reverse().join(' ')
+        }
+
 
     </script>
 </body>

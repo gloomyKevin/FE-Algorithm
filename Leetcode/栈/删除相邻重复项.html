@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 转化为数组, 用栈处理
+        var removeDuplicates = function (S) {
+            let stack = []
+            for (let c of S) {
+                let pre = stack.pop()
+                if (pre !== c) {
+                    stack.push(pre)
+                    stack.push(c)
+                }
+            }
+            return stack.join('')
+        }
+    </script>
+</body>
+
+</html>

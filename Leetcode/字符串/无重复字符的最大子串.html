@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var lengthOfLongestSubstring = function (s) {
+            let map = new Map(),
+                max = 0
+            for (let i = 0, j = 0; j < s.length; j++) {
+                if (map.has(s[j])) {
+                    i = Math.max(map.get(s[j]) + 1, i)
+                }
+                max = Math.max(max, j - i + 1)
+                map.set(s[j], j)
+            }
+            return max
+        }
+    </script>
+</body>
+
+</html>

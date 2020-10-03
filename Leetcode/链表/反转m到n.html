@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var reverseBetween = function (head, m, n) {
+            let pre = new ListNode(null)
+            pre.next = head
+            let dummy = pre,
+                x = m - 1
+
+            while (x--) {
+                pre = pre.next
+            }
+
+            let tmp = null,
+                curr = pre.next,
+                y = n - m + 1
+            while (y) {
+                let next = curr.next
+                curr.next = tmp
+                tmp = curr
+                curr = next
+            }
+
+            pre.next.next = curr
+            pre.next = tmp
+            return dummy.next
+        }
+    </script>
+</body>
+
+</html>
