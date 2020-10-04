@@ -44,18 +44,48 @@
         //     return 1 + Math.max(depth(node.left), depth(node.right));
         // }
 
+        // var isBalanced = function (root) {
+        //     return balanced(root) !== -1
+        // }
+
+        // var balanced = function (node) {
+        //     if (!node) return 0;
+        //     const left = balanced(node.left);
+        //     const right = balanced(node.right);
+        //     if (left === -1 || right === -1 || Max.abs(left - right) > 1) {
+        //         return -1
+        //     }
+        //     return Math, max(left, right) + 1;
+        // }
+
         var isBalanced = function (root) {
             return balanced(root) !== -1
         }
 
+        // 不平衡, 返回-1
+        // 平衡, 返回深度, 联系深度的递归算法
         var balanced = function (node) {
-            if (!node) return 0;
-            const left = balanced(node.left);
-            const right = balanced(node.right);
-            if (left === -1 || right === -1 || Max.abs(left - right) > 1) {
+            if (!node) return 0
+            const left = balanced(node.left)
+            const right = balanced(node.right)
+            if (left === -1 || right === -1 || Math.abs(left - right) > 1) {
                 return -1
             }
-            return Math, max(left, right) + 1;
+            return Math.max(left, right) + 1
+        }
+
+        var idBalanced = function (root) {
+            return balanced(root) !== -1
+        }
+
+        var balanced = function (node) {
+            if (!node) return 0
+            const left = balanced(node.left)
+            const right = balanced(node.right)
+            if (left === -1 || right === -1 || Math.abs(left - right) > 1) {
+                return -1
+            }
+            return Math.max(left, right) + 1
         }
     </script>
 </body>

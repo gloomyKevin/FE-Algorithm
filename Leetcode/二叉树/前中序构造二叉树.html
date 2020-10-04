@@ -9,7 +9,33 @@
 
 <body>
     <script>
+        // 递归
+        // 对preorder和inorder进行左右子树的划分
+        var buildTree = function (preorder, inorder) {
+            if (!preorder) return null
+            let node = new TreeNode(preorder[0])
+            const index = inorder.indexOf(preorder[0])
+            const inLeft = inorder.slice(0, index)
+            const inRight = inorder.slice(index + 1)
+            const preLeft = preorder.slice(1, index + 1)
+            const preRight = preorder.slice(index + 1)
+            node.left = buildTree(preLeft, inLeft)
+            node.right = buildTree(preRight, inRight)
+            return node
+        }
 
+        var buildTree = function (preorder, inorder) {
+            if (!preorder) return null
+            let node = new TreeNode(preorder[0])
+            const index = inorder.indexOf(preorder[0])
+            const inleft = inorder.slice(0, index)
+            const inRight = inorder.slice(index + 1)
+            const preLeft = preorder.slice(1, index + 1)
+            const preRight = preorder.slice(index + 1)
+            node.left = buildTree(preLeft, inleft)
+            node.right = buildTree(preRight, inRight)
+            return node
+        }
     </script>
 </body>
 
