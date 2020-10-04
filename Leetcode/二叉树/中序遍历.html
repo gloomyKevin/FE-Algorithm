@@ -58,6 +58,26 @@
                 node = node.right;
             }
         }
+
+        // 迭代实现
+
+
+        // 迭代法优化
+        var inorderTraversal = function (root) {
+            let stack = [],
+                result = []
+            node = root
+            while (node || stack.length) {
+                while (node) {
+                    stack.push(node)
+                    node = node.left
+                }
+                node = stack.pop()
+                result.push(node.val)
+                node = node.right
+            }
+            return result
+        }
     </script>
 </body>
 

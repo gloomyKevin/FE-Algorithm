@@ -58,6 +58,38 @@
 
         // 迭代实现
         // 模拟递归
+        var preorderTraversal = function (root) {
+            let stack = [],
+                result = []
+
+            if (root) {
+                stack.push(root)
+            }
+            while (stack.length) {
+                let curNode = stack.pop()
+                result.push(curNode.val)
+
+                curNode.right && stack.push(curNode.right)
+                curNode.left && stack.push(curNode.left)
+            }
+            return result
+        }
+
+        var preorderTraversal = function (root) {
+            let stack = [],
+                result = []
+            if (root) {
+                stack.push(root)
+            }
+
+            while (stack.length) {
+                let curNode = stack.pop()
+                result = result.push(curNode.val)
+                curNode.right && stack.push(curNode.right)
+                curNode.left && stack.push(curNode.left)
+            }
+            return result
+        }
     </script>
 </body>
 

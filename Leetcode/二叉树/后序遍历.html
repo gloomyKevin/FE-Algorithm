@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 后序遍历的递归实现
+        var postorderTraversal = function (root) {
+            let result = []
+
+            let postorderTraversalNode = function (node) {
+                if (node) {
+                    postorderTraversalNode(node.left)
+                    postorderTraversalNode(node.right)
+                    result.push(node.val)
+                }
+            }
+            postorderTraversalNode(root)
+            return result
+        }
+
+        // 迭代法
+        var postorderTraversal = function (root) {
+            let stack = [],
+                result = []
+            if (root) stack.push(root)
+            while (stack.length) {
+                let node = stack.pop()
+                result.unshift(node.val)
+
+                if (node.left) {
+                    stack.push(node.left)
+                }
+
+                if (node.right) {
+                    stack.push(node.right)
+                }
+            }
+            return result
+        }
+
+        var postorderTraversal = function (root) {
+            let stack = [],
+                result = []
+            if (root) stack.push(root)
+            while (stack.length) {
+                let node = stack.pop()
+                result.unshift(node.val)
+
+                if (node.left) {
+                    stack.push(node.left)
+                }
+                if (node.right) {
+                    stack.push(node.right)
+                }
+            }
+            return result
+        }
+    </script>
+</body>
+
+</html>
