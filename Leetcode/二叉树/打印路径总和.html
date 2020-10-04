@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var pathSum = function (root, sum, path = [], res = []) {
+            if (root) {
+                path.push(root.val)
+                if (!root.left && !root.right && root.val === sum) res.push([...path])
+                pathSum(root.left, sum - root.val, path, res)
+                pathSum(root.right, sum - root.val, path, res)
+                path.pop()
+            }
+            return res
+        }
+    </script>
+</body>
+
+</html>

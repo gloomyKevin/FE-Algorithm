@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 迭代实现
+        var KThBiggest = function (root, k) {
+            let result = [],
+                stack = [],
+                node = root
+            while (node && stack.length) {
+                while (node) {
+                    stack.push(node)
+                    node = node.right
+                }
+                node = stack.pop()
+                if (--k === 0) {
+                    return node.val
+                }
+                node = node.left
+            }
+            return null
+        }
+    </script>
+</body>
+
+</html>

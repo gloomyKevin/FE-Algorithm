@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 递归法
+        // 深度优先遍历
+        var hasPathSum = function (root, sum) {
+            if (!root) return false
+            // 是叶子节点, 则判断是否为sum
+            if (!root.left && !root.right) return root.val === sum
+            // 将总和减去当前值得到差值，不断递归来找是否等于这个差值的值，左节点找不到就找右节点
+            sum = sum - root.val
+            return hasPathSum(root.left, sum) || hasPathSum(root.right, sum)
+        }
+
+        var hasPathSum = function (root, sum) {
+            if (!root) return false
+            if (!root.left && !root.right) return root.val === sum
+            sum = sum - root.val
+            return hasPathSum(root.left, sum) || hasPathSum(root.right, sum)
+        }
+
+        // 迭代法
+        // 理解掌握!!!
+    </script>
+</body>
+
+</html>

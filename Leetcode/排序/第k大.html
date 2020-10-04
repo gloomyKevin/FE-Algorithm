@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var findKthLargest = function (nums, k) {
+            return quickSelect(nums, nums.length - k)
+        }
+
+        let quickSelect = function (arr, k) {
+            return quick(arr, 0, arr.length - 1, k)
+        }
+
+        let quick = function (arr, left, right, k) {
+            let index
+            if (left < right) {
+                index = partition(arr, left, right)
+                if (k === index) {
+                    return arr[index]
+                } else if (k < index) {
+                    return quick(arr, left, index - 1, k)
+                } else {
+                    return quick(arr, index + 1, right, k)
+                }
+            }
+            return arr[left]
+        }
+
+        let partition = function (arr, left, right) {
+            var datum = arr[Math.floor(Math.random() * (right - left + 1) + left)],
+                i = left,
+                j = right
+            while (i < j) {
+                while (arr[i] < datum) {
+                    i++
+                }
+                while (arr[j] > datum) {
+                    j--
+                }
+                if (i < j) [arr[i], arr[j]] = [arr[j], arr[i]]
+
+                // 当数组中存在重复数据时，即都为datum，但位置不同
+                // 继续递增i，防止死循环
+                if (arr[i] === arr[j] && i !== j) {
+                    i++
+                }
+            }
+            return i
+        }
+    </script>
+</body>
+
+</html>

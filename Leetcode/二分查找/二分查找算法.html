@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 二叉查找树的实现
+        function BinarySearchTree() {
+            let node = function (key) {
+                this.key = key
+                this.left = left
+                this.right = right
+            }
+            let root = null
+
+            // 插入
+            this.insert = function (key) { }
+
+            // 查找
+            this.search = function (key) { }
+
+            // 删除
+            this.remove = function (key) { }
+
+            // 最大值
+            this.max = function () { }
+
+            // 最小值
+            this.min = function () { }
+
+            // 中序遍历
+            this.inOrderTraverse = function () { }
+
+            // 先序遍历
+            this.preOrderTraverse = function () { }
+
+            // 后序遍历
+            this.postOrderTraverse = function () { }
+        }
+
+        function insert(key) {
+            let newNode = new Node(key)
+
+            if (!root) root = newNode
+            else insertNode(root, newNode)
+        }
+
+        // 插入
+        function insertNode(node, newNode) {
+            if (newNode.key < node.key) {
+                // 插入node子树
+                if (!node.left) {
+                    node.left = newNode
+                } else {
+                    insertNode(node.left, newNode)
+                }
+            } else {
+                if (!node.right) {
+                    node.right = null
+                } else {
+                    insertNode(node.right, newNode)
+                }
+            }
+        }
+
+        // 最值
+        // 最小值
+        function min() {
+            let node = root
+            if (node) {
+                while (node && node.left) {
+                    node = node.left
+                }
+                return node.key
+            }
+            return null
+        }
+        // 最大值
+        function max() {
+            let node = root
+            if (node) {
+                while (node && node.right) {
+                    node = node.right
+                }
+                return node.key
+            }
+            return null
+        }
+
+        // 查找
+        function search(key) {
+            return searchNode(root, key)
+        }
+
+        function searchNode(node, key) {
+            if (!node) return false
+            if (key < node.key) {
+                return searchNode(node.left, key)
+            } else if (key > node.key) {
+                return searchNode(node.right, key)
+            } else {
+                return true
+            }
+        }
+
+        // 删除
+
+    </script>
+</body>
+
+</html>
