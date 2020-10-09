@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let countSubString = function (s) {
+        //     const len = s.length
+        //     let count = 0
+        //     const dp = new Array(len)
+
+        //     for (let j = 0; j < len; j++) {
+        //         for (let i = 0; i <= j; i++) {
+        //             if (s[i] === s[j] && (j - i <= 1 || dp[i + 1])) {
+        //                 dp[i] = true
+        //                 count
+        //             } else {
+        //                 dp[i] = false
+        //             }
+        //         }
+        //     }
+        //     return count
+        // }
+
+        let countSubstrings = function (s) {
+            const len = s.length
+            let count = 0
+            const dp = new Array(len)
+
+            for (let j = 0; j < len; j++) {
+                for (let i = 0; i < j; j++) {
+                    if (s[i] === s[j] && (j - i <= 1 || dp[i + 1])) {
+                        dp[i] = true
+                        count++
+                    } else {
+                        dp[i] = false
+                    }
+                }
+            }
+            return count
+        }
+    </script>
+</body>
+
+</html>

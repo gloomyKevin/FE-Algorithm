@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //     let maxSubArray = function (nums) {
+        //         let max = nums[0], pre = 0
+        //         for (const num of nums) {
+        //             if (pre > 0) {
+        //                 pre += num
+        //             } else {
+        //                 pre = num
+        //             }
+        //             Math.max(max, pre)
+        //         }
+        //         return max
+        //     }
+
+        let maxSubArray = function (nums) {
+            let max = nums[0], pre = 0
+            for (let num of nums) {
+                if (pre > 0) {
+                    pre += num
+                } else {
+                    pre = num
+                }
+                Math.max(max, pre)
+            }
+        }
+    </script>
+</body>
+
+</html>

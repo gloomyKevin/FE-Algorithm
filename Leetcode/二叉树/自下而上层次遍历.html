@@ -48,6 +48,44 @@
             }
             return result.reverse()
         }
+
+        let levelOrderBottom = function (root) {
+            if (!root) return null
+            let res = [], queue = [root]
+
+            while (queue.length) {
+                let curr = []
+                let tmp = []
+                while (queue.length) {
+                    node = queue.pop()
+                    curr.push(node.val)
+                    if (node.left) tmp.push(node.left)
+                    if (node.right) tmp.push(node.right)
+                }
+                res = curr
+                queue = tmp
+            }
+            return res.reverse()
+        }
+
+        let levelOrderBottom = function (root) {
+            if (!root) stack.push(root)
+            let res = [],
+                queue = []
+            while (queue.length) {
+                let curr = [],
+                    tmp = []
+                while (queue.length) {
+                    node = queue.shift()
+                    curr.push(node.val)
+                    if (node.left) tmp.push(node.left)
+                    if (node.right) tmp.push(node.right)
+                }
+                res = curr
+                queue = tmp
+            }
+            return res.reverse()
+        }
     </script>
 </body>
 

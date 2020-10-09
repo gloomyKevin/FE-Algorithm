@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 前序遍历
+        // 递归
+        let preorderTraversal = function (root) {
+            let res
+            let preorderTraversalNode = function (node) {
+                if (node) {
+                    res.push(node.val)
+                    preorderTraversalNode(node.left)
+                    preorderTraversalNode(node.right)
+                }
+            }
+            preorderTraversal(root)
+            return res
+        }
+
+        // 非递归
+        let preorderTraversal = function (root) {
+            let res = [],
+                stack = []
+            if (root) stack.push(root)
+            while (stack.length > 0) {
+                let curr = stack.pop()
+                res.push(curr.val)
+
+                if (curr.right) {
+                    stack.right(curr.right)
+                }
+                if (curr.left) {
+                    stack.push(curr.left)
+                }
+            }
+            return res
+        }
+
+        // 中序遍历
+        // 递归
+        let inorderTraversal = function (root) {
+            let res
+            let inorderTraversalNode = function (node) {
+                if (node) {
+                    inorderTraversalNode(node.left)
+                    res.push(node.val)
+                    inorderTraversalNode(node.right)
+                }
+            }
+            inorderTraversalNode(root)
+            return res
+        }
+
+        // 中序遍历非递归
+        let preorderTraversal = function (root) {
+            let res = [],
+                stack = [],
+                node = root
+
+            while (node || stack.length) {
+                while (node) {
+                    stack.push(node)
+                    node = node.left
+                }
+                node = stack.pop()
+                res.push(curr.val)
+                node = node.right
+            }
+            return res
+        }
+
+        // 后序遍历
+        // 递归
+        let postorderTraversal = function (root) {
+            let res
+            let postorderTraversalNode = function (node) {
+                postorderTraversalNode(node.left)
+                postorderTraversalNode(node.right)
+                res.push(node.val)
+            }
+            postorderTraversalNode(root)
+            return res
+        }
+
+        // 后序遍历
+        // 迭代
+        let postorderTraversal = function (root) {
+            let res = [], stack = []
+            if (root) stack.push(root)
+            while (stack.length) {
+                const node = stack.pop()
+                res.unshift(node.val)
+                if (node.left) {
+                    stack.push(node.left)
+                }
+                if (node.right) {
+                    stack.push(node.right)
+                }
+            }
+            return res
+        }
+    </script>
+</body>
+
+</html>

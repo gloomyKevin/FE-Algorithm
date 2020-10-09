@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let maxProfit = function (prices) {
+        //     let max = 0; minPrice = price[0]
+        //     for (let i = 1; i < prices.length; i++) {
+        //         minPrice = Math.min(prices[i], minPrice)
+        //         max = Math.max(max, prices[i] - minPice)
+        //     }
+        //     return max
+        // }
+
+        // let maxProfit = function (prices) {
+        //     let max = 0, minPrice = prices[0]
+        //     for (let i = 0; i < prices.length; i++) {
+        //         minPrice = Math.min(prices[i], minPrice)
+        //         max = Math.max(max, prices[i] - minPrice)
+        //     }
+        //     return max
+        // }
+
+        let maxProfit = function (prices) {
+            let max = 0, minPrice = prices[0]
+
+            for (let i = 0; i < prices.length; i++) {
+                minPrice = Math.min(prices[i], minPrice)
+                max = Math.max(max, prices[i] - minPrice)
+            }
+            return max
+        }
+
+    </script>
+</body>
+
+</html>

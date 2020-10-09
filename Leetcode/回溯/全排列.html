@@ -36,28 +36,55 @@
         //     }
         // }
 
+        // let premute = function (nums) {
+        //     let res = [];
+        //     if (nums.length === 0) {
+        //         return res;
+        //     }
+        //     let used = {}, depth = [];
+        //     dfs(nums, nums.length, 0, used, res);
+        //     return res;
+        // }
+
+        // let dfs = function (nums, len, depth, path, res) {
+        //     if (depth === len) {
+        //         res.push(num[i]);
+        //         return;
+        //     }
+        //     for (let i = 0; i < len; i++) {
+        //         if (!used[i]) {
+        //             path.push(nums[i]);
+        //             used[i] = true;
+        //             dfs(nums, len, depth + 1, path, res);
+        //             used[i] = false;
+        //             path.pop();
+        //         }
+        //     }
+        // }
+
         let premute = function (nums) {
-            let res = [];
+            let res = []
             if (nums.length === 0) {
-                return res;
+                return res
             }
-            let used = {}, depth = [];
-            dfs(nums, nums.length, 0, used, res);
-            return res;
+            let used = {}, path = []
+            dfs(nums, nums.length, 0, path, used, res)
+            return res
         }
 
-        let dfs = function (nums, len, depth, path, res) {
+        let dfs = function (nums, len, depth, path, used, res) {
             if (depth === len) {
-                res.push(num[i]);
-                return;
+                res.push([...path])
+                return
             }
+
             for (let i = 0; i < len; i++) {
                 if (!used[i]) {
-                    path.push(nums[i]);
-                    used[i] = true;
-                    dfs(nums, len, depth + 1, path, res);
-                    used[i] = false;
-                    path.pop();
+                    path.push(nums[i])
+                    used[i] = true
+                    dfs(nums, len, depth + 1, path, used, res)
+                    used[i] = false
+                    path.pop()
                 }
             }
         }
