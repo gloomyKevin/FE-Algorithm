@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var finNumber = function (martix, target) {
+            if (!martix.length) return false
+            let x = 0, y = martix.length - 1
+            while (x < martix[0].length && y >= 0) {
+                if (martix[y][x] === target) return true
+                if (martix[y][x] > target) {
+                    y--
+                } else {
+                    x++
+                }
+            }
+            return flase
+        }
+    </script>
+</body>
+
+</html>

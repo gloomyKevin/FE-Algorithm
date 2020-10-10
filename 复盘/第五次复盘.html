@@ -106,6 +106,158 @@
             }
             return res
         }
+
+        // 第一个只出现一次的字符
+        var firstUniqChar = function (s) {
+            if (!s) return " "
+            let map = new Map()
+            for (let c of s) {
+                if (map.has(c)) {
+                    map.set(c, map.get(c) + 1)
+                } else {
+                    map.set(c, 1)
+                }
+            }
+            for (let c of s) {
+                if (map.get(c) === 1) {
+                    return c
+                }
+            }
+            return " "
+        }
+
+        // 无重复的最长子串
+        var lengthOfLongestSubstring = function (s) {
+            let map = new Map(), max = 0
+            for (let i = 0, j = 0; j < s.length; j++) {
+                if (map.has(s[j])) {
+                    i = Math.max(map.get(s[j]), i)
+                }
+                max = Math.max(max, j - i + 1)
+                map.set(s[j], j)
+            }
+            return max
+        }
+
+        // 二叉树的最大深度
+        let maxDepth = function (root) {
+            if (!root) return 0
+            return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
+        }
+
+        // 平衡二叉树
+        let isBalanced = function (root) {
+            return balanced(root) !== -1
+        }
+
+        let balanced = function (root) {
+            if (!root) return
+            const left = balanced(root.left)
+            const right = balanced(root.right)
+            if (left === -1 || right === -1 || Math.abs(left - right) > 1) {
+                return -1
+            }
+            return Math.max(left, right) + 1
+        }
+
+        // 路径总和
+        var hasPathSum = function (root, sum) {
+            if (!root) return false
+            if (!root.left && !root.right) return root.val === sum
+            return hasPathSum(root.left, sum) || hasPathSum(root.right, sum)
+        }
+
+        // 二叉搜索树第k小
+        let k = function (root) {
+            let stack = [],
+                res = [],
+                node = root
+            while (node && stack.length) {
+                while (node) {
+                    stack.push(node)
+                    node = node.left
+                }
+                node = stack.pop()
+                while (--k) {
+                    res = node.val
+                    return res
+                }
+                node = node.right
+            }
+            return null
+        }
+
+        // 爬楼梯
+        let climbStairs = function (n) {
+            let res = 1, n1 = 1, n2 = 1
+            for (let i = 2; i <= n.length; i++) {
+                res = n1 + n2
+                n1 = n2
+                n2 = res
+            }
+            return res
+        }
+
+        // 最小花费爬楼梯
+        let minCost = function (cost) {
+            let n1 = cost[0], n2 = cost[1]
+            for (let i = 2; i < cost.length; i++) {
+                let tmp = n2
+                n2 = Math.min(n1, n2) + cost[i]
+                n1 = tmp
+            }
+            return Math.min(n1, n2)
+        }
+
+        // 最大子序和
+        let max = function (nums) {
+            let max = nums[0], pre = 0
+            for (let num of nums) {
+                if (num > 0) {
+                    pre += num
+                } else {
+                    pre = num
+                }
+                Math.max(pre, max)
+            }
+            return max
+        }
+
+        let stock = function (prices) {
+            let max = 0, minPrice = prices[0]
+            for (let i = 1; i < prices.length; i++) {
+                minPrice = Math.min(minPrice, prices[i])
+                max = Math.max(max, prices[i] - minPrice)
+            }
+            return max
+        }
+
+        // 全排列
+        let premute = function (nums) {
+            let res = []
+            if (nums.length === 0) {
+                return res
+            }
+            let used = {}, path = []
+            dfs(nums, nums.length, 0, depth, path, used, res)
+            return res
+        }
+
+        let dfs = function (nums, len, depth, path, used, res) {
+            if (depth === len) {
+                res.push([...path])
+                return
+            }
+            for (let i = 0; i < len; i++) {
+                if (!used[i]) {
+                    path.push(nums[i])
+                    used[i] = true
+                    dfs(nums, len, depth + 1, path, used, res)
+                    used[i] = false
+                    path.pop()
+                }
+            }
+        }
     </script>
 </body>
 
