@@ -8,7 +8,105 @@
 </head>
 
 <body>
+    <script>
+        // function Parent(name) {
+        //     this.name = name
+        //     this.colors = ['red']
+        // }
 
+        // Parent.prototype.getName = function () {
+        //     console.log(this.name);
+        // }
+
+        // function Child(name, age) {
+        //     Parent.call(this, name)
+        //     this.age = age
+        // }
+
+        // Child.prototype = new Parent()
+        // Child.prototype.constructor = Child
+
+        // var child1 = new Child('kevin', '18')
+
+        // function asyncToGen(getFunction) {
+        //     return function (...args) {
+        //         const gen = getFunction.apply(this.args)
+        //         return new Promise((resolve, reject) => {
+        //             function step(key, arg) {
+        //                 let result
+        //                 try {
+        //                     genResult = gen[key](arg)
+        //                 } catch (err) {
+        //                     return reject(err)
+        //                 }
+        //                 const { value, done } = genResult
+        //                 if (done) {
+        //                     return resolve(value)
+        //                 }
+        //                 return Promise.resolve(value).then(
+        //                     (val) => {
+        //                         step('next', val)
+        //                     },
+        //                     (err) => {
+        //                         step('throw', err)
+        //                     }
+        //                 )
+        //             }
+        //             step('next')
+        //         })
+        //     }
+        // }
+
+        // const getData = () => new Promise(resolve => setTimeout(() => resolve('data'), 1000))
+        // function* test() {
+        //     const data = yield getData()
+        //     console.log('data', data)
+        //     const data2 = yield getData()
+        //     console.log('data2', data2);
+        //     return 'success'
+        // }
+
+        // const gen = asyncToGen(test)
+        // gen().then(res => console.log(res))
+
+        const threeSum = (nums, target) => {
+            const len = nums.length
+            const result = []
+
+            if (len < 3) {
+                return result
+            }
+
+            nums.sort((a, b) => a - b)
+            for (let i = 0; i < len - 2; i++) {
+                if (nums[i] > target) {
+                    break
+                }
+                if (i && nums[i] === nums[i - 1]) {
+                    continue
+                }
+                let left = i + 1
+                let right = len - 1
+                while (left < right) {
+                    const sum = nums[i] + nums[left] + nums[right]
+                    if (sum === target) {
+                        result.push(nums[i], nums[left++], nums[right--])
+                        while (nums[left] === nums[left - 1]) {
+                            left++
+                        }
+                        while (nums[right] === nums[left + 1]) {
+                            right--
+                        }
+                    } else if (sum > target) {
+                        right--
+                    } else {
+                        left++
+                    }
+                }
+            }
+            return result
+        }
+    </script>
 </body>
 
 </html>
