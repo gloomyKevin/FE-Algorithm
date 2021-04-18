@@ -9,19 +9,48 @@
 
 <body>
     <script>
-        var finNumber = function (martix, target) {
-            if (!martix.length) return false
-            let x = 0, y = martix.length - 1
-            while (x < martix[0].length && y >= 0) {
-                if (martix[y][x] === target) return true
-                if (martix[y][x] > target) {
-                    y--
-                } else {
-                    x++
+        // var finNumber = function (martix, target) {
+        //     if (!martix.length) return false
+        //     let x = 0, y = martix.length - 1
+        //     while (x < martix[0].length && y >= 0) {
+        //         if (martix[y][x] === target) return true
+        //         if (martix[y][x] > target) {
+        //             y--
+        //         } else {
+        //             x++
+        //         }
+        //     }
+        //     return false
+        // }
+
+        // var name = 'kevin'
+        // var foo = function () {
+        //     console.log(this)
+        //     var self = this
+        //     console.log(self);
+        //     function bar() {
+        //         console.log(this)
+        //     }
+        // }
+
+
+        var obj = {
+            name: "Kevin",
+            showThis: function () {
+                console.log(this)
+                var self = this
+                function bar() {
+                    self.name = "Tom"
+                    console.log(this)
+                    console.log(self)
                 }
+                bar()
             }
-            return false
         }
+
+        obj.showThis()
+        // console.log(obj.name)
+        // console.log(window.name)
     </script>
 </body>
 
