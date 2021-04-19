@@ -11,6 +11,7 @@
 class Node {
     constructor(value) {
         this.value = value
+        // TODO使用HashSet代替数组，将时间复杂度下降到O(1)
         this.adjacents = []
     }
 
@@ -52,7 +53,7 @@ class Graph {
     }
 
     removeEdge(source, destination) {
-        
+
     }
 
     addVertex(value) {
@@ -73,6 +74,14 @@ class Graph {
             }
         }
         return this.nodes.delete(value)
+    }
+
+    *bfs(first) {
+
+    }
+
+    *dfs(first) {
+
     }
 }
 
