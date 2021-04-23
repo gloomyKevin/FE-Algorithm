@@ -7,12 +7,12 @@ export default class TrieNode {
         this.children = new HashTable()
     }
 
-    getChild(character) {
+    getChild (character) {
         return this.children.get(character)
     }
 
-    addChild(character, isCompleteWord = false) {
-        if(!this.children.has(character)) {
+    addChild (character, isCompleteWord = false) {
+        if (!this.children.has(character)) {
             this.children.set(character, new TrieNode(character, isCompleteWord))
         }
 
@@ -22,5 +22,24 @@ export default class TrieNode {
         childNode.isCompleteWord = childNode.isCompleteWord || isCompleteWord
 
         return childNode
+    }
+
+    // 可以删除节点的情况：
+    // 无接下来的子节点，isCompleteWord为false
+    removeChild (character) {
+        const childNode = this.children.get(character)
+
+        if (childNode
+            && !this.isCompleteWord
+            && !childNode.hasChildren()
+        ) {
+            this.childNode.delete(character)
+        }
+
+        return this
+    }
+
+    hasChild(character) {
+        return this.children.has(character)
     }
 }
